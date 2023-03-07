@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Тестовое задание</title>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <style>
+
+            /*
+            Стили пишите здесь.
+            Верстать необходимо в точности с макетом, даже если картинка будет искажена.
+            */ 
+
+            body {
+                min-height: 1080px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: Arial, Helvetica, sans-serif;
+                background: linear-gradient(
+                        180deg,
+                        rgba(224, 224, 224, 0.8) 0%,
+                        rgba(141, 241, 255, 0.64) 87.5%
+                    ),
+                    #df9bff;
+            }
+
+            .main-container {
+                width: 600px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 50px 24px;
+            }
+
+            .item-title {
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+
+            .main-container div:first-child .item-title {
+                font-size: 24px;
+                margin-bottom: 40px;
+            }
+
+            /* .item-img {
+                width: 288px;
+                height: 192px;
+            } */
+
+            /* .main-container div:first-child .item-img {
+                width: 600px;
+                height: 384px;
+            } */
+
+            .item-bottom {
+                display: flex;
+                justify-content: space-between;
+                font-size: 8px;
+                margin-top: 8px;
+            }
+
+            .main-container div:first-child .item-bottom {
+                font-size: 19px;
+                margin-top: 25px;
+            }
+
+            .item-text-field {
+                font-size: 8px;
+                color: #212529;
+                background: none;
+                border: none;
+            }
+
+            .main-container div:first-child .item-text-field {
+                font-size: 19px;
+            }
+
+        </style>
+        <script>
+
+            /*
+Скрипты пишите здесь.
+Требования:
+1. Рекомендуется сначала сверстать как есть, без скриптов, взять изображения из Figma. После того, как макет без js будет завёрстан, приступить к js.
+2. Для комфортной работы со стилями нужно после открытия Figma-файла перейти в своё рабочее пространство ("Back to Files"), нажать на "Тестовое задание" правой кнопкой мыши и выбрать "Duplicate". Тогда будут доступны все действия для работы с файлом.
+3. Для всех операций необходимо использовать jQuery, даже если вы знаете аналог на "чистом" javascript
+4. Картинки нужно получать с помощью запроса на адрес https://cataas.com/cat/says/hello, где "hello" - это текст, который будет написан на картинке.
+5. В левом нижнем углу на макете под каждой картинкой - это поле ввода. После измененния текста внутри него и клике снаружи текстового поля, должен произойти обновлённый запрос и картинка должна измениться.
+6. В правом нижнем углу - размеры исходного изображения (делайте это в последнюю очередь). Важно! Нужны размеры именно исходного изображения, а не те, которые получатся после вставки изображения в вёрстку. На макете указаны произвольные значения, у вас для каждой картинки будут свои значения.
+*/
+
+$(function () {
+    let items = $('.main-container > div');
+
+    for (let item of items) {
+        let input = $('.item-text-field', item);
+
+        input.change(function () {
+            let inputValue = input.val();
+            $('.item-img', item).attr(
+                'src',
+                `https://cataas.com/cat/says/${inputValue}`
+            );
+        });
+    }
+});
+        </script>
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div>
+                <div class="item-title">Main Cat</div>
+                <img class="item-img" src="img/hello 1.png" alt="Main Cat" />
+                <div class="item-bottom">
+                    <input
+                    class="item-text-field"
+                    type="text"
+                    value="hello"
+                />
+                    <div>300&times;200</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="item-title">Small cat</div>
+                <img class="item-img" src="img/prupru 1.png" alt="prupru" />
+                <div class="item-bottom">
+                    <input
+                    class="item-text-field"
+                    type="text"
+                    value="prupru"
+                />
+                    <div>200&times;100</div>
+                </div>
+              
+            </div>
+
+            <div>
+                <div class="item-title">Another small cat</div>
+                <img class="item-img" src="img/meow 1.png" alt="meow" />
+                <div class="item-bottom">
+                    <input
+                    class="item-text-field"
+                    type="text"
+                    value="meow"
+                />
+                    <div>200&times;100</div>
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
