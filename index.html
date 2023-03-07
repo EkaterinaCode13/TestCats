@@ -44,15 +44,15 @@
                 margin-bottom: 40px;
             }
 
-            /* .item-img {
+            .item-img {
                 width: 288px;
                 height: 192px;
-            } */
+            }
 
-            /* .main-container div:first-child .item-img {
+            .main-container div:first-child .item-img {
                 width: 600px;
                 height: 384px;
-            } */
+            }
 
             .item-bottom {
                 display: flex;
@@ -95,17 +95,25 @@ $(function () {
     let items = $('.main-container > div');
 
     for (let item of items) {
+
+        let img = $('.item-img', item);
+
+        let imgSize = $('.item-bottom div:last-child', item);
+
         let input = $('.item-text-field', item);
 
         input.change(function () {
             let inputValue = input.val();
-            $('.item-img', item).attr(
+            img.attr(
                 'src',
                 `https://cataas.com/cat/says/${inputValue}`
             );
+
+            imgSize.html(`${img.width()}&times;${img.height()}`);
         });
     }
-});
+    });
+
         </script>
     </head>
 
