@@ -95,24 +95,28 @@ $(function () {
     let items = $('.main-container > div');
 
     for (let item of items) {
-
         let img = $('.item-img', item);
-
         let imgSize = $('.item-bottom div:last-child', item);
-
         let input = $('.item-text-field', item);
 
-        input.change(function () {
+        input.change(function ()
+        {
+            const myImage = $('<img>');
+
+            $(myImage).on('load', function() {
+                imgSize.html(`${this.width}&times;${this.height}`);
+            });
+
             let inputValue = input.val();
+            myImage.attr('src', `https://cataas.com/cat/says/${inputValue}`);
+            
             img.attr(
                 'src',
                 `https://cataas.com/cat/says/${inputValue}`
             );
-
-            imgSize.html(`${img.width()}&times;${img.height()}`);
         });
     }
-    });
+});
 
         </script>
     </head>
@@ -156,7 +160,6 @@ $(function () {
                     value="meow"
                 />
                     <div>200&times;100</div>
-
                 </div>
                 </div>
             </div>
