@@ -95,7 +95,6 @@ $(function () {
     let items = $('.main-container > div');
 
     for (let item of items) {
-        let img = $('.item-img', item);
         let imgSize = $('.item-bottom div:last-child', item);
         let input = $('.item-text-field', item);
 
@@ -105,15 +104,16 @@ $(function () {
 
             $(myImage).on('load', function() {
                 imgSize.html(`${this.width}&times;${this.height}`);
+                let img = $('.item-img', item);
+                myImage.width(img.width());
+                myImage.height(img.height());
+                myImage.addClass('item-img');
+                img.replaceWith(myImage);
             });
 
             let inputValue = input.val();
             myImage.attr('src', `https://cataas.com/cat/says/${inputValue}`);
             
-            img.attr(
-                'src',
-                `https://cataas.com/cat/says/${inputValue}`
-            );
         });
     }
 });
