@@ -100,20 +100,20 @@ $(function () {
 
         input.change(function ()
         {
-            const myImage = $('<img>');
+            const newImage = $('<img>');
 
-            $(myImage).on('load', function() {
+            $(newImage).on('load', function() {
                 imgSize.html(`${this.width}&times;${this.height}`);
                 let img = $('.item-img', item);
-                myImage.width(img.width());
-                myImage.height(img.height());
-                myImage.addClass('item-img');
-                img.replaceWith(myImage);
+                newImage.width(img.width());
+                newImage.height(img.height());
+                newImage.addClass('item-img');
+                img.replaceWith(newImage);
             });
 
             let inputValue = input.val();
-            myImage.attr('src', `https://cataas.com/cat/says/${inputValue}`);
-            
+            newImage.attr('src', `https://cataas.com/cat/says/${inputValue}`);
+
         });
     }
 });
