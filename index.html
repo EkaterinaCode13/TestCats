@@ -66,14 +66,14 @@
                 margin-top: 25px;
             }
 
-            .item-text-field {
+            .item-bottom input {
                 font-size: 8px;
                 color: #212529;
                 background: none;
                 border: none;
             }
 
-            .main-container div:first-child .item-text-field {
+            .main-container div:first-child input {
                 font-size: 19px;
             }
 
@@ -96,23 +96,23 @@ $(function () {
 
     for (let item of items) {
         let imgSize = $('.item-bottom div:last-child', item);
-        let input = $('.item-text-field', item);
+        let input = $('.item-bottom input', item);
 
         input.change(function ()
         {
-            const newImage = $('<img>');
+            const newImg = $('<img>');
 
-            $(newImage).on('load', function() {
+            $(newImg).on('load', function() {
                 imgSize.html(`${this.width}&times;${this.height}`);
                 let img = $('.item-img', item);
-                newImage.width(img.width());
-                newImage.height(img.height());
-                newImage.addClass('item-img');
-                img.replaceWith(newImage);
+                newImg.width(img.width());
+                newImg.height(img.height());
+                newImg.addClass('item-img');
+                img.replaceWith(newImg);
             });
 
             let inputValue = input.val();
-            newImage.attr('src', `https://cataas.com/cat/says/${inputValue}`);
+            newImg.attr('src', `https://cataas.com/cat/says/${inputValue}`);
 
         });
     }
@@ -131,7 +131,7 @@ $(function () {
                     class="item-text-field"
                     type="text"
                     value="hello"
-                />
+                    />
                     <div>300&times;200</div>
                 </div>
             </div>
@@ -144,7 +144,7 @@ $(function () {
                     class="item-text-field"
                     type="text"
                     value="prupru"
-                />
+                    />
                     <div>200&times;100</div>
                 </div>
               
@@ -158,7 +158,7 @@ $(function () {
                     class="item-text-field"
                     type="text"
                     value="meow"
-                />
+                    />
                     <div>200&times;100</div>
                 </div>
                 </div>
